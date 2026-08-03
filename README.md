@@ -1,7 +1,8 @@
 # Suzhou-game
 
 ## Chapter
->>>>>>> 0cb708e816c1853a94890e9ff5a71da81e62a612
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
