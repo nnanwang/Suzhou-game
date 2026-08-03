@@ -114,16 +114,19 @@ Suggested references:
 
 # Part 3 -- Think About Gameplay
 
-Answer the following questions:
+Before class, think about how the player will experience Chapter 1.
+
+Complete the following table.
 
 | Question | Your Answer |
 |----------|-------------|
-| **1. What information should the player know before making a decision?** | |
-| **2. Which stakeholder has the strongest argument? Why?** | |
-| **3. How should the player receive feedback after making a decision?** | |
+| **1. What information should the player receive before making a decision?** | |
+| **2. What actions should the player take before reaching the final decision?** <br><sub>(Examples: read a report, inspect a location, talk to stakeholders, compare proposals...)</sub> | |
+| **3. What is the most important decision in this chapter?** | |
+| **4. How should the game provide immediate feedback after the player's decision?** <br><sub>(Examples: news article, indicator changes, citizen reactions, environmental report...)</sub> | |
+| **5. Which part of Chapter 1 do you think will be the most interesting for the player? Why?** | |
 
-There are no right or wrong answers. The purpose is to prepare for our in-class discussion.
-
+> There are no right or wrong answers. The goal is to prepare for our in-class discussion and transform your ideas into an interactive gameplay experience.
 ------------------------------------------------------------------------
 
 # What We Will Do Together in Class
@@ -146,6 +149,6 @@ Please submit:
 -   Two Stakeholder Profiles
 -   Three Policy Options
 -   5--8 Visual References
--   Gameplay Reflection 
+-   Interaction Planning 
 
 > **Do NOT create wireframes before class.** We will design the gameplay flow, screen flow, and interface together during the lesson.
