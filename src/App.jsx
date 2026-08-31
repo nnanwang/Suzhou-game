@@ -6,11 +6,19 @@ import Header from "./components/Header";
 import Menu from "./components/Menu";
 import AboutModal from "./components/AboutModal";
 import CityIllustration from "./components/CityIllustration";
+import ChapterHub from "./components/ChapterHub";
+import StatusMeters from "./components/StatusMeters"
 
 // App assembles the page and owns its one piece of state.
 function App() {
   // isAboutOpen remembers whether the About modal should be visible.
   const [isAboutOpen, setIsAboutOpen] = useState(false);
+
+  const [currentScreen, setCurrentScreen] = useState("home")
+
+  function showScreen(screenName) {
+    setCurrentScreen(screenName);
+  }
 
   // This event handler demonstrates a simple JavaScript alert.
   function handleStartGame() {
@@ -19,7 +27,8 @@ function App() {
 
   return (
     <>
-      <main className="game-shell">
+      {currentScreen === "home" && (
+              <main className="game-shell">
         <CityIllustration />
 
         <section className="menu-panel">
@@ -40,6 +49,22 @@ function App() {
           </div>
         </section>
       </main>
+
+      )
+      }
+
+      {currentScreen === "chapterHub" && (
+        <ChapterHub
+          onBack={() => showScreen("home")}
+          onSlectChapter={() => showScreen("chapter1")}
+        />
+      )}
+
+      {currentScreen === "chapter1" && (
+        <main>
+          <header></header>
+        </main>
+      )}
 
       {/* Conditional rendering: the modal exists only when this value is true. */}
       {isAboutOpen && (
