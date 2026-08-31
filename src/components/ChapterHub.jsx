@@ -2,31 +2,39 @@ import React from "react";
 import chapters from "../data/chapters";
 import ChapterCard from "./ChapterCard";
 
-function ChapterHub({ onBack, onSlectChapter }) {
-    return (
-        <main>
-            <header>
-                <button onClick={onBack}>Back to Home</button>
-                <p>SUZHOU 2035 · CITY ARCHIVE</p>
-            </header>
+// ChapterHub receives navigation functions from App instead of owning screen state.
+function ChapterHub({ onBack, onSelectChapter }) {
+  return (
+    <main className="hub-screen">
+      <header className="game-topbar">
+        <button type="button" className="text-button" onClick={onBack}>
+          ← Home
+        </button>
+        <p>SUZHOU 2035 · CITY ARCHIVE</p>
+      </header>
 
-            <section>
-                <p>Your decisions shapes the city</p>
-                <h1>Choose a Chapter</h1>
-         
+      <section className="hub-content">
+        <p className="screen-eyebrow">Your decisions shape the city</p>
+        <h1>Choose a Chapter</h1>
+        <p className="screen-intro">
+          Begin with Suzhou's waterways. New chapters will become available as
+          the story grows.
+        </p>
 
-            <div>
-                {chapters.map((chapter) => (
-                    <ChapterCard
-                        Key={chapter.id}
-                        chapter={chapter}
-                        onselect={onSlectChapter}
-                    />
-                ))}
-                </div>
-                   </section>
-        </main>
-    )
+        <div className="chapter-list">
+          {/* map() creates one ChapterCard for every object in the data array. */}
+          {chapters.map((chapter) => (
+            /* key helps React identify each card when the list changes. */
+            <ChapterCard
+              key={chapter.id}
+              chapter={chapter}
+              onSelect={onSelectChapter}
+            />
+          ))}
+        </div>
+      </section>
+    </main>
+  );
 }
 
 export default ChapterHub;
