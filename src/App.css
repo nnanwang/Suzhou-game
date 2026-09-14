@@ -39,7 +39,7 @@ button:disabled {
 .city-background {
   position: absolute;
   inset: 0;
-  background-image: url("/public/images/homepage.png");
+  background-image: url("/images/homepage.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -264,15 +264,6 @@ button:disabled {
   background: #31594f;
 }
 
-/* Shared layout for the Chapter Hub and story screens. */
-.hub-screen,
-.chapter-screen {
-  min-height: 100vh;
-  min-height: 100svh;
-  background:
-    linear-gradient(rgb(244 239 223 / 94%), rgb(244 239 223 / 97%)),
-    url("/images/homepage_blue.png") center / cover fixed;
-}
 
 /* The hub stays inside the game viewport; only its chapter list can scroll. */
 .hub-screen {
@@ -432,7 +423,7 @@ button:disabled {
 .status-meters {
   width: min(100% - 48px, 1160px);
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: clamp(24px, 5vw, 68px);
   margin: 0 auto;
   padding: 28px 0;
@@ -480,6 +471,14 @@ button:disabled {
 
 .status-meter--economy .status-meter__label strong {
   color: #976024;
+}
+
+.status-meter--heritage .status-meter__fill {
+  background: #8f6353;
+}
+
+.status-meter--heritage .status-meter__label strong {
+  color: #7d5142;
 }
 
 .status-meter--public .status-meter__fill {
@@ -674,6 +673,184 @@ button:disabled {
   transform: translateY(0);
 }
 
+/* Class 5 swaps one focused story card as currentStep changes. */
+.chapter-stage {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  width: min(100% - 64px, 1120px);
+  margin: 0 auto;
+  padding: 8px 0 40px;
+}
+
+.chapter-stage .report-layout {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.story-card {
+  width: min(100%, 980px);
+  min-height: 430px;
+  display: grid;
+  grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.2fr);
+  overflow: hidden;
+  color: #f4efdf;
+  background: #202d2a;
+  border: 1px solid rgb(211 163 61 / 46%);
+  border-radius: 7px;
+  box-shadow: 0 20px 48px rgb(0 0 0 / 24%);
+}
+
+.story-card__content {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(38px, 5vw, 64px);
+}
+
+.story-card__content .screen-eyebrow {
+  color: #d3a33d;
+}
+
+.story-card__content h1 {
+  margin: 0;
+  color: #f4efdf;
+  font-family: Baskerville, "Iowan Old Style", Georgia, serif;
+  font-size: clamp(2.8rem, 5vw, 4.7rem);
+  font-weight: 500;
+}
+
+.scene-card__image {
+  position: relative;
+  min-height: 430px;
+  overflow: hidden;
+  background: #24332e;
+  border-right: 1px solid rgb(244 239 223 / 12%);
+}
+
+.scene-card__image img {
+  width: 100%;
+  height: 100%;
+  min-height: 430px;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.scene-card__caption {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  padding: 8px 10px;
+  color: #f4efdf;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  background: rgb(18 31 28 / 74%);
+  border: 1px solid rgb(244 239 223 / 22%);
+  border-radius: 4px;
+  backdrop-filter: blur(5px);
+  text-transform: uppercase;
+}
+
+.scene-card__observation,
+.dialogue-card blockquote {
+  margin: 30px 0;
+  color: #d6d3c7;
+  font-family: Baskerville, "Iowan Old Style", Georgia, serif;
+  font-size: 1.12rem;
+  line-height: 1.75;
+}
+
+.story-button {
+  min-height: 52px;
+  padding: 14px 22px;
+  color: #17201e;
+  font-size: 0.76rem;
+  font-weight: 700;
+  background: #c9993d;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.story-actions {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.story-button--secondary {
+  color: #d6d3c7;
+  background: transparent;
+  border: 1px solid rgb(214 211 199 / 36%);
+}
+
+.story-button--secondary:hover:not(:disabled) {
+  color: #f4efdf;
+  background: rgb(244 239 223 / 8%);
+}
+
+.story-button:hover:not(:disabled) {
+  background: #e0b253;
+}
+
+.story-button:disabled {
+  color: #aaa99f;
+  background: #39443f;
+  border: 1px solid rgb(244 239 223 / 13%);
+}
+
+.dialogue-card__portrait {
+  position: relative;
+  min-height: 430px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle, rgb(211 163 61 / 18%), transparent 48%),
+    #17231f;
+  border-right: 1px solid rgb(244 239 223 / 12%);
+}
+
+.dialogue-card__portrait img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.dialogue-card__role {
+  margin: 8px 0 0;
+  color: #9da9a3;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.dialogue-card__perspective {
+  width: fit-content;
+  margin: 18px 0 0;
+  padding: 8px 12px;
+  color: #d8c799;
+  font-size: 0.66rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  background: rgb(211 163 61 / 8%);
+  border: 1px solid rgb(211 163 61 / 26%);
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.dialogue-card blockquote {
+  padding-left: 24px;
+  border-left: 2px solid #c9993d;
+}
+
 .report-layout {
   width: min(100% - 48px, 1160px);
   display: grid;
@@ -855,6 +1032,10 @@ button:disabled {
     grid-template-columns: 1fr;
   }
 
+  .status-meters {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .chapter-screen--dark .report-layout {
     width: min(100% - 40px, 760px);
     grid-template-columns: minmax(82vw, 1fr) minmax(82vw, 1fr);
@@ -869,6 +1050,30 @@ button:disabled {
   .chapter-screen--dark .report-card,
   .chapter-screen--dark .mission-card {
     scroll-snap-align: center;
+  }
+
+  .chapter-stage {
+    width: min(100% - 40px, 760px);
+    overflow-y: auto;
+  }
+
+  .story-card {
+    grid-template-columns: 1fr;
+  }
+
+  .story-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .scene-card__image,
+  .dialogue-card__portrait {
+    min-height: 220px;
+    border-right: 0;
+    border-bottom: 1px solid rgb(244 239 223 / 12%);
+  }
+
+  .scene-card__image img {
+    min-height: 220px;
   }
 }
 
@@ -887,6 +1092,10 @@ button:disabled {
 
   .game-topbar p {
     display: none;
+  }
+
+  .status-meters {
+    gap: 18px;
   }
 
   .chapter-screen--dark .game-topbar {

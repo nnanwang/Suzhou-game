@@ -1,60 +1,78 @@
+// Import React so this component can return JSX.
 import React from "react";
 
-// This component groups the report and mission into the two main game cards.
-function ReportCard() {
+// Receive report content and a navigation function through props.
+function ReportCard({ report, onContinue }) {
+  // Return the report and mission layouts as one screen.
   return (
+    // report-layout places the report beside the mission card.
     <section className="report-layout">
+      {/* The main report card displays content from chapter1Report. */}
       <article className="report-card">
+        {/* Group the government label, title, and year in the report header. */}
         <div className="report-card__heading">
           <div>
+            {/* This agency label belongs to the visual report template. */}
             <p>SUZHOU MUNICIPAL GOVERNMENT</p>
-            <h1>Water Quality Report</h1>
+
+            {/* Insert the report title supplied through props. */}
+            <h1>{report.title}</h1>
           </div>
+
+          {/* Display the game's target year. */}
           <span>2035</span>
         </div>
 
-        <p className="report-card__summary">
-          New monitoring data shows that water quality in the Shantang Canal
-          district has declined after a period of rapid development.
-        </p>
+        {/* Insert the report summary supplied through props. */}
+        <p className="report-card__summary">{report.summary}</p>
 
+        {/* Hold the repeated report findings. */}
         <div className="report-findings">
-          <div>
-            <strong>74%</strong>
-            <span>of tested sites meet the city standard</span>
-          </div>
-          <div>
-            <strong>−12%</strong>
-            <span>water quality change since 2032</span>
-          </div>
-          <div>
-            <strong>High</strong>
-            <span>public concern in nearby communities</span>
-          </div>
+          {/* Create one finding block for each object in report.findings. */}
+          {report.findings.map((finding) => (
+            // key gives React a stable identity for this repeated item.
+            <div key={finding.label}>
+              {/* Display the finding's main label. */}
+              <strong>{finding.label}</strong>
+
+              {/* Display the finding's supporting explanation. */}
+              <span>{finding.text}</span>
+            </div>
+          ))}
         </div>
 
+        {/* Display the advisor note at the bottom of the report. */}
         <aside className="report-note">
+          {/* This label identifies the type of note. */}
           <span>Advisor's note</span>
-          The numbers tell only part of the story. Visit Shantang Canal and
-          speak with the people who live and work there.
+
+          {/* Insert the full note supplied through props. */}
+          {report.note}
         </aside>
       </article>
 
       {/* The mission card explains the player's task and next action. */}
       <aside className="mission-card">
+        {/* Display the current chapter number. */}
         <p className="screen-eyebrow">Chapter 01</p>
+
+        {/* Display the chapter theme. */}
         <h2>Water & Environment</h2>
+
+        {/* Explain what the player should do before leaving the report. */}
         <p>
           Your first task is to review the report before beginning the field
           investigation.
         </p>
-        {/* Disabled keeps the future scene visible without making it playable yet. */}
-        <button type="button" disabled>
-          Canal Visit · Coming next
+
+        {/* Run the onContinue callback supplied by ChapterOne. */}
+        <button type="button" onClick={onContinue}>
+          Visit Shantang Canal →
         </button>
       </aside>
     </section>
   );
 }
 
+// Export ReportCard so ChapterOne can render it.
 export default ReportCard;

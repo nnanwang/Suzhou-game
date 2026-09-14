@@ -3,6 +3,7 @@ import React from "react";
 // One reusable card can display any chapter object from chapters.js.
 function ChapterCard({ chapter, onSelect }) {
   return (
+    // The available value controls the card's style, click, and disabled state.
     <button
       type="button"
       className={`chapter-card ${chapter.available ? "" : "chapter-card--locked"}`}
@@ -10,6 +11,7 @@ function ChapterCard({ chapter, onSelect }) {
       disabled={!chapter.available}
     >
       <span className="chapter-card__number">
+        {/* padStart turns 1 into 01 so every chapter number has two digits. */}
         {String(chapter.id).padStart(2, "0")}
       </span>
 
