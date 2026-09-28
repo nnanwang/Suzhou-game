@@ -1,20 +1,14 @@
-// This file stores Chapter 1 content as JavaScript data.
-// Components read this data through props instead of hard-coding story text.
-
-// chapter1Report contains everything displayed by ReportCard.
+// Keep story content as data so components can focus on displaying it.
 export const chapter1Report = {
-  // The main report heading.
   title: "Water Quality Report",
-  // A short introduction to the water-quality problem.
+
   summary:
     "The canal running through the Shantang district is still swimmable in most sections, but water clarity has dropped noticeably over the past three years.",
 
-  // ReportCard uses map() to display each object in this array.
   findings: [
     {
-      // The large or bold part of the first finding.
       label: "Three years",
-      // The supporting explanation for the first finding.
+
       text: "of noticeably declining water clarity",
     },
     {
@@ -27,14 +21,11 @@ export const chapter1Report = {
     },
   ],
 
-  // The advisor note explains why the player should visit the canal.
   note:
     "Suzhou's canals are central to the city's identity and economy. Visit Shantang Canal and hear from the people who live and work there before any decision is made.",
 };
 
-// canalScene contains everything displayed by CanalScene.
 export const canalScene = {
-  // The heading shown on the field-visit screen.
   title: "Shantang Canal",
   location: "Industrial edge · Field observation",
   image: "/images/chapter1/shantang-canal.webp",
@@ -44,44 +35,82 @@ export const canalScene = {
     "Near the factory outflow points, sediment buildup has left the water a duller green, and a faint chemical smell is sometimes detectable. Local fishing families also report smaller and less frequent catches than five years ago.",
 };
 
-// Store both interview characters in one object.
-// ChapterOne selects a character with characters.feng or characters.lin.
+// Each character has the same fields, so one DialogueCard can display either one.
 export const characters = {
-  // Data for the factory owner's interview.
   feng: {
-    // The name displayed as the DialogueCard heading.
     name: "Mr. Feng",
-    // The character's job or relationship to the issue.
+
     role: "Factory Owner",
-    // The portrait file used by DialogueCard.
+
     image: "/images/chapter1/mr-feng.webp",
-    // An accessible description of Mr. Feng's portrait.
+
     imageAlt: "Portrait of Mr. Feng, the factory owner",
-    // A short summary of the concern he represents.
+
     perspective: "Industrial growth · Forty proposed jobs",
-    // Class 5 displays one representative line instead of a dialogue array.
-    dialogue:
-      "This expansion means forty new jobs for this district. Why should we be held back for a canal that's going to change anyway?",
+
+    // DialogueCard reads these lines in order using dialogueIndex.
+    dialogue: [
+      "This expansion means forty new jobs for this district.",
+      "Why should we be held back for a canal that's going to change anyway?",
+
+      "Those jobs could help local families build a future here. That matters to this district too.",
+      "Cleaner equipment costs money. If you ask us to upgrade, we need time to plan how to pay for it.",
+      "I understand that people are worried about the water. Give us clear rules and a realistic timeline, so we can protect jobs while making improvements.",
+    ],
   },
 
-  // Data for the local resident's interview.
   lin: {
     name: "Auntie Lin",
     role: "Local Resident · Lifelong canal-side fisher",
     image: "/images/chapter1/auntie-lin.webp",
     imageAlt: "Portrait of Auntie Lin, a lifelong canal-side fisher",
     perspective: "Water quality · Community trust",
-    dialogue:
-      "My family has fished this water for three generations. It's not the same water it was ten years ago.",
+
+    // DialogueCard reads these lines in order using dialogueIndex.
+    dialogue: [
+      "My family has fished this water for three generations.",
+      "It's not the same water it was ten years ago.",
+
+      "We bring home fewer fish now. When the catch gets smaller, families like mine feel the difference at the dinner table.",
+      "I know the factory provides jobs. But fishing is work too, and our work depends on clean water.",
+      "Before you approve more growth, tell us how the canal will be protected and how we will know the water is getting better. We need more than a promise.",
+    ],
   },
 };
 
-// StatusMeters maps over this array and creates one meter for each object.
-// These values are display-only in Class 5, so no update logic exists yet.
+// These percentages are display-only and do not change when a policy is confirmed.
 export const startingMeters = [
-  // Each object has a label and a percentage value.
+
   { name: "Environment", value: 62 },
   { name: "Economy", value: 55 },
   { name: "Heritage", value: 58 },
   { name: "Public", value: 48 },
+];
+
+// Each policy has a unique id for tracking which card is selected.
+export const policyChoices = [
+  {
+    id: "approve",
+    image: "/images/chapter1/mr-feng.webp",
+    priority: "Jobs & growth",
+    title: "Approve the expansion",
+    description: "Allow the factory to expand under the current requirements.",
+    tradeoff: "Prioritizes the proposed jobs, but leaves residents' water concerns unresolved.",
+  },
+  {
+    id: "conditional",
+    image: "/images/chapter1/shantang-canal.webp",
+    priority: "Growth & safeguards",
+    title: "Approve with environmental conditions",
+    description: "Require cleaner equipment and a water-monitoring plan before expansion begins.",
+    tradeoff: "Supports growth with safeguards, but adds costs and may delay hiring.",
+  },
+  {
+    id: "pause",
+    image: "/images/chapter1/auntie-lin.webp",
+    priority: "Water investigation",
+    title: "Pause the expansion",
+    description: "Delay approval while the city investigates canal water quality.",
+    tradeoff: "Prioritizes investigation, but postpones the proposed jobs and creates uncertainty for the factory.",
+  },
 ];

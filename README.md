@@ -25,3 +25,18 @@ The React Compiler is not enabled on this template because of its impact on dev 
 
 
 
+
+## Run locally
+
+Use Node.js 22.12 or later. From this project folder:
+
+```sh
+npm ci
+npm run dev
+```
+
+Run `npm run build` to check the production build and `npm run lint` to check the code.
+
+The current game includes the home screen, chapter hub, water report, canal visit, two multi-line interviews, and policy selection and confirmation. Meters remain display-only; confirming a policy records it only during the current chapter visit.
+
+Key files: `src/components/ChapterOne.jsx` controls story screens, `DialogueCard.jsx` advances dialogue, `PolicyDecision.jsx` displays policy choices, and `src/data/chapter1.js` stores story content.
