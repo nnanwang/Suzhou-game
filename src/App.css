@@ -682,7 +682,7 @@ button:disabled {
   transform: translateY(0);
 }
 
-/* Show one story card at a time as currentStep changes. */
+/* Class 5 swaps one focused story card as currentStep changes. */
 .chapter-stage {
   flex: 1 1 auto;
   min-height: 0;
@@ -1134,7 +1134,7 @@ button:disabled {
   }
 }
 
-/* Keep every card and action reachable inside the fixed game screen. */
+/* CLASS 7: Keep every card and action reachable inside the fixed game screen. */
 .chapter-stage--policy {
   display: block;
   overflow-y: auto;
@@ -1180,4 +1180,28 @@ button:disabled {
 }
 @media (prefers-reduced-motion: reduce) {
   .policy-playing-card { transition: none; }
+}
+
+/* CLASS 7: Keep result feedback readable within the existing scrolling policy stage. */
+.policy-result { max-width: 720px; }
+.policy-result h1 { font: 400 clamp(1.8rem, 3vw, 2.5rem)/1.2 Baskerville, Georgia, serif; }
+.policy-result h2 { font-size: 1.3rem; }
+.policy-result__choice { color: #e0c788; }
+.policy-result__changes { padding: 0; list-style: none; }
+.policy-result__changes li { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid #526154; }
+.policy-result__changes strong { text-align: right; color: #e0c788; }
+@media (max-width: 480px) {
+  .policy-result { padding: 18px; }
+  .policy-result__changes li { gap: 6px; font-size: 0.85rem; }
+}
+
+/* CLASS 7: The signed decree uses the canal as its backdrop, with a readable overlay. */
+.chapter-screen--result {
+  background:
+    linear-gradient(rgb(15 27 24 / 55%), rgb(15 27 24 / 75%)),
+    url("/images/chapter1/shantang-canal.webp") center / cover no-repeat;
+}
+.chapter-screen--result .policy-result {
+  background: rgb(28 45 37 / 90%);
+  box-shadow: 0 16px 48px rgb(0 0 0 / 30%);
 }
