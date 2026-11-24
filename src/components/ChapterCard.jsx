@@ -21,7 +21,7 @@ function ChapterCard({ chapter, onSelect }) {
       </span>
 
       <span className="chapter-card__status">
-        {chapter.available ? "Begin →" : "Locked"}
+        {chapter.statusLabel ?? (chapter.available ? "Begin →" : "Locked")}
       </span>
     </button>
   );

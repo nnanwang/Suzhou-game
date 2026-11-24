@@ -14,8 +14,10 @@ function StatusMeters({ meters }) {
             <span>{meter.name}</span>
             <strong>{meter.value}</strong>
           </div>
-          <div className="status-meter__track">
-            {/* Inline style converts the number into a percentage bar width. */}
+          <div className="status-meter__track" role="progressbar"
+            aria-label={meter.name} aria-valuemin={0} aria-valuemax={100}
+            aria-valuenow={meter.value}>
+            {/* CLASS 7: Updated props change both the number and the percentage bar width. */}
             <div
               className="status-meter__fill"
               style={{ width: `${meter.value}%` }}

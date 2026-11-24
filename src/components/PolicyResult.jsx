@@ -1,7 +1,7 @@
 import React from "react";
 
 // CLASS 7: This reusable result reads data through props and sends restart to the parent.
-function PolicyResult({ policy, before, after, onRestart }) {
+function PolicyResult({ policy, before, after, onRestart, nextChapter, onNextChapter }) {
   return (
     <article className="policy-desk">
       <section className="policy-decree policy-result" aria-label="Policy result">
@@ -24,8 +24,15 @@ function PolicyResult({ policy, before, after, onRestart }) {
             );
           })}
         </ul>
-        <p role="status">Your decree has taken effect. Restart to explore another policy.</p>
-        <button type="button" className="story-button" onClick={onRestart}>Restart chapter →</button>
+        <p role="status">{nextChapter ? "Your decree has taken effect. Continue with these city values, or restart this chapter." : "You have completed all currently available chapters."}</p>
+        {/* CLASS 9: Show Continue only when another chapter exists; App handles the click. */}
+        {nextChapter && (
+          <button type="button" className="story-button" onClick={onNextChapter}>
+            Continue to Chapter {nextChapter.id} →
+          </button>
+        )}
+        {/* CLASS 9: The parent restores this chapter's starting values. */}
+        <button type="button" className="story-button story-button--secondary" onClick={onRestart}>Restart chapter →</button>
       </section>
     </article>
   );

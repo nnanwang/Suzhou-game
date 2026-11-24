@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 
-// Props provide the character data and actions supplied by the parent.
+// CLASS 6: The parent passes character data and callbacks as props.
 function DialogueCard({ character, onBack, onComplete }) {
-  // Remember the current line; array positions begin at zero.
+  // CLASS 6: Dialogue state tracks which line is currently shown, starting at 0.
   const [dialogueIndex, setDialogueIndex] = useState(0);
 
-  // Read one line from the dialogue array.
+  // CLASS 6: Read the current line from the character's dialogue array.
   const currentDialogue = character.dialogue[dialogueIndex];
   const isLastLine = dialogueIndex === character.dialogue.length - 1;
 
-  // Next moves to the next line, or finishes after the final line.
+  // CLASS 6: Next advances one line until the conversation is finished.
   function handleNext() {
     if (isLastLine) {
-      // Tell the parent the conversation is complete so it can change screens.
+      // CLASS 6: The child calls onComplete; the parent chooses the next screen.
       onComplete();
     } else {
       setDialogueIndex(dialogueIndex + 1);

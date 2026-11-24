@@ -1199,9 +1199,12 @@ button:disabled {
 .chapter-screen--result {
   background:
     linear-gradient(rgb(15 27 24 / 55%), rgb(15 27 24 / 75%)),
-    url("/images/chapter1/shantang-canal.webp") center / cover no-repeat;
+    var(--chapter-result-image, url("/images/chapter1/shantang-canal.webp")) center / cover no-repeat;
 }
 .chapter-screen--result .policy-result {
   background: rgb(28 45 37 / 90%);
   box-shadow: 0 16px 48px rgb(0 0 0 / 30%);
 }
+
+/* CLASS 8: Keep Continue and Restart distinct when the result wraps on small screens. */
+.policy-result > .story-button { margin: 6px; }

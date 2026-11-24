@@ -10,6 +10,8 @@ function CityIllustration() {
       role="img"
       aria-label="Watercolor view of Suzhou with traditional buildings, a bridge, and a canal"
     >
+      {/* TODO: Turn this placeholder into an Interactive City Map. */}
+      {/* TODO: Add city Indicators in a future lesson. */}
     </div>
   );
 }

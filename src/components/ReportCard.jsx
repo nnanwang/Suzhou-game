@@ -1,13 +1,14 @@
 // Import React so this component can return JSX.
 import React from "react";
 
+// CLASS 9: Chapter labels come from props so this report works in every chapter.
 // Receive report content and a navigation function through props.
-function ReportCard({ report, onContinue }) {
+function ReportCard({ report, chapterId, chapterTitle, sceneTitle, onContinue }) {
   // Return the report and mission layouts as one screen.
   return (
     // report-layout places the report beside the mission card.
     <section className="report-layout">
-      {/* The main report card displays content from chapter1Report. */}
+      {/* The main report card displays content from the current report. */}
       <article className="report-card">
         {/* Group the government label, title, and year in the report header. */}
         <div className="report-card__heading">
@@ -54,10 +55,10 @@ function ReportCard({ report, onContinue }) {
       {/* The mission card explains the player's task and next action. */}
       <aside className="mission-card">
         {/* Display the current chapter number. */}
-        <p className="screen-eyebrow">Chapter 01</p>
+        <p className="screen-eyebrow">Chapter {String(chapterId).padStart(2, "0")}</p>
 
         {/* Display the chapter theme. */}
-        <h2>Water & Environment</h2>
+        <h2>{chapterTitle}</h2>
 
         {/* Explain what the player should do before leaving the report. */}
         <p>
@@ -65,14 +66,14 @@ function ReportCard({ report, onContinue }) {
           investigation.
         </p>
 
-        {/* Run the onContinue callback supplied by ChapterOne. */}
+        {/* CLASS 9: The button calls back; ChapterScreen changes currentStep. */}
         <button type="button" onClick={onContinue}>
-          Visit Shantang Canal →
+          Visit {sceneTitle} →
         </button>
       </aside>
     </section>
   );
 }
 
-// Export ReportCard so ChapterOne can render it.
+// Export ReportCard so ChapterScreen can render it.
 export default ReportCard;
